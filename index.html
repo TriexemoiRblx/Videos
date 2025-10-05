@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrMoiX</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="light-mode">
+  <div id="app" class="min-h-screen relative">
+    <div id="background"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <h1 class="logo">TrMoiX</h1>
+      <button id="theme-toggle">🌗</button>
+      <button id="login-btn">Login with Google</button>
+      <button id="logout-btn" class="hidden">Logout</button>
+    </aside>
+
+    <!-- Feed -->
+    <main id="feed-section">
+      <section id="post-section" class="hidden">
+        <textarea id="post-input" placeholder="What’s happening?"></textarea>
+        <button id="post-btn">Post</button>
+      </section>
+      <div id="feed"></div>
+    </main>
+
+    <!-- Right panel -->
+    <aside id="right-panel">
+      <h2>Welcome to TrMoiX</h2>
+      <p>Share your thoughts instantly.</p>
+    </aside>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="js/firebase.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/clickSpark.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
