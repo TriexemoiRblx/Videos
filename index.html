@@ -36,6 +36,61 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- Inline JavaScript -->
+  <script>
+    // 1. Chuyển đổi chế độ sáng/tối
+    const themeToggle = document.getElementById("theme-toggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const currentMode = document.body.classList.contains("dark-mode") ? "dark" : "light";
+      localStorage.setItem("theme", currentMode); // Lưu chế độ vào localStorage
+    });
+
+    // 2. Khi tải trang, lấy lại chế độ từ localStorage
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme") || "light"; // Mặc định là sáng nếu không có
+      document.body.classList.add(savedTheme + "-mode");
+    });
+
+    // 3. Tính năng toggle menu (Sidebar)
+    const loginBtn = document.getElementById("login-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const postSection = document.getElementById("post-section");
+
+    // 4. Sự kiện click vào login
+    loginBtn.addEventListener("click", () => {
+      loginBtn.classList.add("hidden");
+      logoutBtn.classList.remove("hidden");
+      postSection.classList.remove("hidden");
+      // Thêm mã đăng nhập vào đây (ví dụ: với Firebase hoặc Supabase)
+    });
+
+    // 5. Sự kiện click vào logout
+    logoutBtn.addEventListener("click", () => {
+      logoutBtn.classList.add("hidden");
+      loginBtn.classList.remove("hidden");
+      postSection.classList.add("hidden");
+      // Thêm mã đăng xuất vào đây
+    });
+
+    // 6. Tạo bài đăng
+    const postBtn = document.getElementById("post-btn");
+    const postInput = document.getElementById("post-input");
+
+    postBtn.addEventListener("click", () => {
+      const postContent = postInput.value.trim();
+      if (postContent) {
+        const postElement = document.createElement("div");
+        postElement.classList.add("post");
+        postElement.innerHTML = `<p>${postContent}</p>`;
+        document.getElementById("feed").appendChild(postElement);
+        postInput.value = ""; // Làm trống textarea
+      }
+    });
+  </script>
+
+  <!-- Optional external JavaScript -->
   <script src="js/firebase.js"></script>
   <script src="js/supabase.js"></script>
   <script src="js/ClickSpark.js"></script>
